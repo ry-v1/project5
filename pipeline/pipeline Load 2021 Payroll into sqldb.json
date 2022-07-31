@@ -1,0 +1,35 @@
+{
+	"name": "pipeline Load 2021 Payroll into sqldb",
+	"properties": {
+		"description": "pipeline to Load 2021 Payroll into sqldb",
+		"activities": [
+			{
+				"name": "df_payroll2021_sqldb",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "nycpayroll2021_to_sqldb",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-07-31T12:11:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
